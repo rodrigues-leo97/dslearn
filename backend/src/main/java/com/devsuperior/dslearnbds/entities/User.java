@@ -27,7 +27,7 @@ public class User implements Serializable {
     private Set<Role> roles = new HashSet<>(); //Associação MANY to MANY se coloca o set pra garantir que não haja repetição do mesmo role no mesmo usuário, posterior chama uma classe que a implementa
 
     @OneToMany(mappedBy = "user")
-    private List<Notification> notifications = new ArrayList<>();
+    private List<Notfication> notifications = new ArrayList<>();
 
     public User(Long id, String name, String email, String password, Set<Role> roles) {
         this.id = id;
@@ -81,7 +81,7 @@ public class User implements Serializable {
         this.roles = roles;
     }
 
-    public List<Notification> getNotifications() {
+    public List<Notfication> getNotifications() {
         return notifications;
     }
 

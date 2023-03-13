@@ -1,25 +1,29 @@
 package com.devsuperior.dslearnbds.entities;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
-public class Notfication {
-
+@Entity
+@Table(name = "tb_notification")
+public class Notfication implements Serializable {
+    private static final long seriaVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
-    private Instant momento;
+    private Instant moment;
     private boolean read = false;
     private String route;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Notfication(Long id, String text, Instant momento, boolean read, String route, User user) {
+    public Notfication(Long id, String text, Instant moment, boolean read, String route, User user) {
         this.id = id;
         this.text = text;
-        this.momento = momento;
+        this.moment = moment;
         this.read = read;
         this.route = route;
         this.user = user;
@@ -44,12 +48,12 @@ public class Notfication {
         this.text = text;
     }
 
-    public Instant getMomento() {
-        return momento;
+    public Instant getmoment() {
+        return moment;
     }
 
-    public void setMomento(Instant momento) {
-        this.momento = momento;
+    public void setmoment(Instant moment) {
+        this.moment = moment;
     }
 
     public boolean isRead() {
