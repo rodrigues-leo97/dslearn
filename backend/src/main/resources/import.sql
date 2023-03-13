@@ -18,5 +18,9 @@ INSERT INTO tb_course (name, img_uri, img_gray_uri) VALUES ('Bootcamp HTML', 'ht
 INSERT INTO tb_offer (edition, start_moment, end_moment, course_id) VALUES('1.0',  TIMESTAMP WITH TIME ZONE '2020-11-20T03:00:00', TIMESTAMP WITH TIME ZONE '2021-11-13T03:00:00', 1);
 INSERT INTO tb_offer (edition, start_moment, end_moment, course_id) VALUES('2.0',  TIMESTAMP WITH TIME ZONE '2020-12-20T03:00:00', TIMESTAMP WITH TIME ZONE '2021-12-13T03:00:00', 1);
 
+INSERT INTO tb_resource (title, description, position, img_uri, type, offer_id) VALUES('Trilha HTML', 'Trilha principal do curso', 1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSefLON8u1JE0pPOCpIBxubsTn_1J6ZrQvcqQ&usqp=CAU', 1, 1);
+INSERT INTO tb_resource (title, description, position, img_uri, type, offer_id) VALUES('Fórum', 'Tire suas dúvidas', 2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSefLON8u1JE0pPOCpIBxubsTn_1J6ZrQvcqQ&usqp=CAU', 2, 1);
+INSERT INTO tb_resource (title, description, position, img_uri, type, offer_id) VALUES('Lives', 'Lives exclusivas para a turma', 3, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSefLON8u1JE0pPOCpIBxubsTn_1J6ZrQvcqQ&usqp=CAU', 0, 1);
+
 
 
