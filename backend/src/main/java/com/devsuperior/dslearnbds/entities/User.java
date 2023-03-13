@@ -1,8 +1,11 @@
 package com.devsuperior.dslearnbds.entities;
 
+import javax.management.Notification;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,6 +25,9 @@ public class User implements Serializable {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>(); //Associação MANY to MANY se coloca o set pra garantir que não haja repetição do mesmo role no mesmo usuário, posterior chama uma classe que a implementa
+
+    @OneToMany(mappedBy = "user")
+    private List<Notification> notifications = new ArrayList<>();
 
     public User(Long id, String name, String email, String password, Set<Role> roles) {
         this.id = id;
@@ -73,6 +79,10 @@ public class User implements Serializable {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Notification> getNotifications() {
+        return notifications;
     }
 
     @Override
