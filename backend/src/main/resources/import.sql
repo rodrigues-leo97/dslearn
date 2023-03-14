@@ -32,3 +32,8 @@ INSERT INTO tb_notification (text, moment, read, route, user_id) VALUES ('Lorem 
 INSERT INTO tb_notification (text, moment, read, route, user_id) VALUES ('Lorem Ipsum', TIMESTAMP WITH TIME ZONE '2020-11-20T03:00:00', false, 'www.google.com', 1);
 INSERT INTO tb_notification (text, moment, read, route, user_id) VALUES ('Lorem Ipsum', TIMESTAMP WITH TIME ZONE '2020-11-20T03:00:00', true, 'www.google.com', 2);
 
+INSERT INTO tb_enrollment (user_id, offer_id, enroll_moment, refund_moment, available, only_update) VALUES (1, 1, TIMESTAMP WITH TIME ZONE '2020-11-20T13:00:00', null, true, false);
+INSERT INTO tb_enrollment (user_id, offer_id, enroll_moment, refund_moment, available, only_update) VALUES (2, 1, TIMESTAMP WITH TIME ZONE '2020-11-20T13:00:00', null, true, false);
+INSERT INTO tb_enrollment (user_id, offer_id, enroll_moment, refund_moment, available, only_update) VALUES (3, 1, TIMESTAMP WITH TIME ZONE '2020-11-20T13:00:00', null, true, false);
+
+
