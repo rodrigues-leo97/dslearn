@@ -16,8 +16,13 @@ public class Offer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String edition;
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant startMoment;
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant endMoment;
+
     @ManyToOne //quando é muitos para um, esse objeto depende de um objeto do Course, na tabela ficará como chave estrangeira ao lado da tabela OFFER
     @JoinColumn(name = "course_id")
     private Course course;
