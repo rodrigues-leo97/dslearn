@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,6 +29,9 @@ public class Offer implements Serializable {
     private Course course;
     @OneToMany(mappedBy = "offer")
     private List<Resource> resources = new ArrayList<>();
+
+    @OneToMany(mappedBy = "offer")
+    private List<Topic> topics = new ArrayList<>();
 
     public Offer(Long id, String edition, Instant startMoment, Instant endMoment, Course course) {
         this.id = id;
@@ -82,6 +86,10 @@ public class Offer implements Serializable {
 
     public List<Resource> getResources() {
         return resources;
+    }
+
+    public List<Topic> getTopics() {
+        return topics;
     }
 
     @Override

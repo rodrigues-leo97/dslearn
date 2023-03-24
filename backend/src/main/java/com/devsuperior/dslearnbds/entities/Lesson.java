@@ -2,9 +2,7 @@ package com.devsuperior.dslearnbds.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /*
 * @Inheritance(strategy = InheritanceType.JOINED) //anotação para quando a classe tem herança, o InheritanceType.JOINED serve para dizer que quero que crie tabelas separadas para cada classe que herdar dela
@@ -35,6 +33,12 @@ public abstract class Lesson implements Serializable { //quando a classe é abst
                 @JoinColumn(name = "offer_id")
             })
     private Set<Enrollment> enrollmentsDone = new HashSet<>();
+
+    @OneToMany(mappedBy = "lesson")
+    private List<Deliver> deliveries = new ArrayList<>();
+
+    @OneToMany(mappedBy = "lesson")
+    private List<Topic> topics = new ArrayList<>();
 
 
     public Lesson(Long id, String title, Integer position, Section section) {
@@ -78,6 +82,14 @@ public abstract class Lesson implements Serializable { //quando a classe é abst
 
     public Set<Enrollment> getEnrollmentsDone() {
         return enrollmentsDone;
+    }
+
+    public List<Deliver> getDeliveries() {
+        return deliveries;
+    }
+
+    public List<Topic> getTopics() {
+        return topics;
     }
 
     //não se coloca o set de coleção

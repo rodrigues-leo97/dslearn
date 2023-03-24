@@ -17,7 +17,7 @@ public class Notfication implements Serializable {
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant moment;
 
-    private boolean read = false;
+    private boolean read;
     private String route;
     @ManyToOne
     @JoinColumn(name = "user_id")
