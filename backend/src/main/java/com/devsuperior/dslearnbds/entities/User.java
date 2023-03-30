@@ -1,17 +1,18 @@
 package com.devsuperior.dslearnbds.entities;
 
-import javax.management.Notification;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "tb_user")
-public class User implements Serializable {
-    private static final long seriaVersionUID = 1L;
+public class User implements UserDetails, Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +28,7 @@ public class User implements Serializable {
     private Set<Role> roles = new HashSet<>(); //Associação MANY to MANY se coloca o set pra garantir que não haja repetição do mesmo role no mesmo usuário, posterior chama uma classe que a implementa
 
     @OneToMany(mappedBy = "user")
-    private List<Notfication> notifications = new ArrayList<>();
+    private List<Notification> notifications = new ArrayList<>();
 
     public User(Long id, String name, String email, String password) {
         this.id = id;
@@ -80,7 +81,7 @@ public class User implements Serializable {
         this.roles = roles;
     }
 
-    public List<Notfication> getNotifications() {
+    public List<Notification> getNotifications() {
         return notifications;
     }
 
@@ -97,5 +98,44 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         return id.hashCode();
+    }
+
+    //IMPLEMENTAÇÃO DO USERDETAIL -> desenvolver os métodos de acordo com a necessidade do código
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        //para retornar uma coleção do tipo GrantedAuthority
+        //o User tem uma associação com os ROLES, percorrer a coleção convertendo cada elemento do tipo ROLE para o tipo GRANTEDAUTHORITY
+
+        return roles
+                .stream()
+                .map(role -> new SimpleGrantedAuthority(role.getAuthority())) //classe concreta que implementa o GRANTEDAUTHORITY(interface), getAuthority(pq quero o nome do ROLE que está nesse obj role)
+                .collect(Collectors.toList());
+    }
+
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    //daqui pra baixo vou fazer tudo retornar true pq não tem essa lógica por enquanto na aplicação
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

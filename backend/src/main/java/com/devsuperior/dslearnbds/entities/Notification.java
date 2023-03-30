@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tb_notification")
-public class Notfication implements Serializable {
+public class Notification implements Serializable {
     private static final long seriaVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class Notfication implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Notfication(Long id, String text, Instant moment, boolean read, String route, User user) {
+    public Notification(Long id, String text, Instant moment, boolean read, String route, User user) {
         this.id = id;
         this.text = text;
         this.moment = moment;
@@ -32,7 +32,7 @@ public class Notfication implements Serializable {
         this.user = user;
     }
 
-    public Notfication() {
+    public Notification() {
     }
 
     public Long getId() {
@@ -86,9 +86,9 @@ public class Notfication implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Notfication)) return false;
+        if (!(o instanceof Notification)) return false;
 
-        Notfication that = (Notfication) o;
+        Notification that = (Notification) o;
 
         return Objects.equals(id, that.id);
     }
