@@ -22,8 +22,12 @@ public class UserService implements UserDetailsService {
     @Autowired
     UserRepository repository;
 
+    @Autowired
+    AuthService authService;
+
     @Transactional
     public UserDTO findById(Long id) {
+        authService.validateSelfOrAdmin(id); //valida se o usuário tem recursos pra acessar oq ele está querendo acessar ou se irá bloquear o acesso dele para determinado recurso
         Optional<User> obj = repository.findById(id);
         User entity = obj.orElseThrow(() -> new EntityNotFoundException("Entity not found"));
 

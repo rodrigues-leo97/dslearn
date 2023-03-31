@@ -138,4 +138,9 @@ public class User implements UserDetails, Serializable {
     public boolean isEnabled() {
         return true;
     }
+
+    public boolean hasHole(String roleName) {//para testar a role de acesso do usuário
+        return roles.stream()
+                    .anyMatch(x -> x.getAuthority().equals(roleName));
+    }
 }
