@@ -48,6 +48,9 @@ public abstract class Lesson implements Serializable { //quando a classe é abst
         this.section = section;
     }
 
+    public Lesson() {
+    }
+
     public Long getId() {
         return id;
     }

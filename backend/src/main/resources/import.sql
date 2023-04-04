@@ -31,7 +31,7 @@ INSERT INTO tb_enrollment (user_id, offer_id, enroll_moment, refund_moment, avai
 INSERT INTO tb_enrollment (user_id, offer_id, enroll_moment, refund_moment, available, only_update) VALUES (2, 1, TIMESTAMP WITH TIME ZONE '2020-11-20T13:00:00', null, true, false);
 INSERT INTO tb_enrollment (user_id, offer_id, enroll_moment, refund_moment, available, only_update) VALUES (3, 1, TIMESTAMP WITH TIME ZONE '2020-11-20T13:00:00', null, true, false);
 
-/*inserindo lesson e content por estarem associados um ao outro*/
+
 INSERT INTO tb_lesson (title, position, section_id) VALUES ('Aula 1 do capítulo 1', 1, 1);
 INSERT INTO tb_content (id, text_content, video_uri) VALUES (1, 'Material de apoio abc', 'https://www.youtube.com/watch?v=G-Dlito6Zkw');
 INSERT INTO tb_lesson (title, position, section_id) VALUES ('Aula 2 do capítulo 1', 2, 1);
